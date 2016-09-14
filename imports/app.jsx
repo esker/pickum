@@ -1,15 +1,15 @@
 import React, { Component, PropTypes } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 
-impor {picks} from '../api/picks.js';
+import {picks} from '../api/picks.js';
 
 import Picks from './picks.jsx';
 
 // App component - represents the whole app
 class App extends Component {
-  renderTasks() {
+  renderPicks() {
     return this.props.picks.map((task) => (
-      <Task key={task._id} task={task} />
+      <Picks key={task._id} task={task} />
     ));
   }
 
@@ -17,11 +17,11 @@ class App extends Component {
     return (
       <div className="container">
         <header>
-         <h1>Todo List</h1>
+         <h1>Weeks Pick List</h1>
         </header>
 
         <ul>
-          {this.renderTasks()}
+          {this.renderPicks()}
         </ul>
 
       </div>
@@ -30,13 +30,13 @@ class App extends Component {
 }
 
 App.propTypes = {
-  tasks: PropTypes.array.isRequired,
+  picks: PropTypes.array.isRequired,
 };
 
 
 
 export default createContainer(() => {
   return {
-    tasks: Tasks.find({}).fetch(),
+    picks: Picks.find({}).fetch(),
   };
 }, App);
