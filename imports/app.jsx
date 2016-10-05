@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 
-import {picks} from '../api/picks.js';
+import {picks} from './api/picks.js';
 
-import Picks from './picks.jsx';
+import Picks from './ui/picks.jsx';
 
 // App component - represents the whole app
 class App extends Component {
@@ -18,6 +18,14 @@ class App extends Component {
       <div className="container">
         <header>
          <h1>Weeks Pick List</h1>
+
+         <form className="new-task" onSubmit={this.handleSubmit.bind(this)} >
+                <input
+                  type="text"
+                  ref="textInput"
+                  placeholder="Type to add new tasks"
+                />
+              </form>
         </header>
 
         <ul>
